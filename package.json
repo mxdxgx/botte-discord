@@ -1,0 +1,21 @@
+{
+  "name": "botte-discord",
+  "version": "1.0.0",
+  "description": "just a botte ",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "test"
+  },
+  "author": "madmax",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7",
+    "eslint": "^9.16.0"
+  }
+}
