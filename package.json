@@ -4,17 +4,21 @@
   "description": "just a botte ",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
+    "start-js": "tsc && node dist/app.js",
+    "start-ts": "ts-node src/app.ts",
+    "debug": "tsc && node --inspect-brk dist/app.js",
+    "build": "tsc",
     "test": "test"
   },
   "author": "madmax",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "discord.js": "^14.16.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
+    "@vitest/ui": "^2.1.8",
     "dotenv": "^16.4.7",
     "eslint": "^9.16.0"
   }
