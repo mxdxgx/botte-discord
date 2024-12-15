@@ -40,5 +40,12 @@ DATABASE_URL=
 
 ```
 
+### start the bot 
+
+```
+npm run start
+```
+
+Have fun! 
 ## Contributing 
 Feel free to contribute and open issues if you find any bugs or have suggestions for improvements.
