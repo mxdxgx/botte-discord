@@ -1,6 +1,6 @@
 ![example workflow](https://github.com/mxdxgx/botte-discord/actions/workflows/ci.yml/badge.svg)
 
-![Coverage Status](https://coveralls.io/repos/github/mxdxgx/botte-discord/badge.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/mxdxgx/botte-discord/badge.svg)](https://coveralls.io/github/mxdxgx/botte-discord)
 # Botte Discord
 
 ## Stack and Versions
