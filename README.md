@@ -8,8 +8,9 @@
 | Technology | Version |
 |------------|---------|
 | Node.js    | 22.12.0 |
-| npm        | 10.9.0 |
+| npm        | 10.9.0  |
 | TypeScript | 5.7.2   |
+| vitest     | 2.1.8   |
 
 ## About
 
