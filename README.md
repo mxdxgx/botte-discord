@@ -1,5 +1,5 @@
 ![example workflow](https://github.com/mxdxgx/botte-discord/actions/workflows/ci.yml/badge.svg)
-
+[![CodeQL](https://github.com/mxdxgx/botte-discord/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/mxdxgx/botte-discord/actions/workflows/github-code-scanning/codeql)
 [![Coverage Status](https://coveralls.io/repos/github/mxdxgx/botte-discord/badge.svg)](https://coveralls.io/github/mxdxgx/botte-discord)
 # Botte Discord
 
