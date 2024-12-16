@@ -1,12 +1,22 @@
 {
   "name": "botte-discord",
   "version": "1.0.0",
-  "description": "just a botte ",
+  "description": "just a botte",
   "main": "src/index.js",
   "scripts": {
-    "start": "tsc && node dist/src/app.js",
+    
+    "db:reset": "prisma migrate reset",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    
+    "clean": "rm -rf dist coverage",
     "build": "tsc",
-    "test": "npx vitest --coverage --run"
+    "test": "npx vitest --coverage --run",
+    "start": "npm run build && npm run db:migrate && node dist/src/app.js"
+  },
+  "engines": {
+    "node": "22.12.0",
+    "npm": "10.9.0"
   },
   "author": "madmax",
   "license": "MIT",
