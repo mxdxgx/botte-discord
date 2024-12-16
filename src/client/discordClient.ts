@@ -14,5 +14,12 @@ export class DiscordClient {
         });
         this.client.login(token);
         this.client.once(Events.ClientReady, clientReadyHandler || (() => { }));
+        this.client.on(Events.InteractionCreate, async interaction => {
+            if (!interaction.isChatInputCommand()) return;
+
+            if (interaction.commandName === 'ping') {
+                await interaction.reply('Pong!');
+            }
+        });
     }
 }
