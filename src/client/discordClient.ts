@@ -1,25 +1,29 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js';
-export class DiscordClient {
-    client: Client;
-    constructor(token: string, clientReadyHandler?: (client: Client) => void) {
+import { CommandBase } from '../commands/commandBase';
+import { RegisterCommands } from '../commands/register';
 
+export class DiscordClient {
+    commands: Map<string, CommandBase> = new Map();
+    client: Client;
+    constructor(token: string, commands: RegisterCommands, clientReadyHandler?: (client: Client) => void) {
+
+        this.commands = commands.getCommandsMap();
         this.client = new Client({
             intents: [
                 GatewayIntentBits.Guilds,
                 GatewayIntentBits.GuildMessages,
                 GatewayIntentBits.MessageContent,
                 GatewayIntentBits.GuildInvites,
-
             ]
         });
+
         this.client.login(token);
         this.client.once(Events.ClientReady, clientReadyHandler || (() => { }));
-        this.client.on(Events.InteractionCreate, async interaction => {
-            if (!interaction.isChatInputCommand()) return;
-
-            if (interaction.commandName === 'ping') {
-                await interaction.reply('Pong!');
-            }
+        // @todo extract the events handling to a separate class
+        this.client.on(Events.InteractionCreate, interaction => {
+            console.log('InteractionCreate event received:', interaction);
+            if (!interaction.isCommand()) return;
+            this.commands.get(interaction.commandName).execute(interaction);
         });
     }
 }

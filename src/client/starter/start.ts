@@ -1,15 +1,16 @@
 import { Client } from "discord.js";
-import { DiscordClient } from "../discordClient";
 import { RegisterCommands } from "../../commands/register";
+import { DiscordClient } from "../discordClient";
 
 export class Start {
     client: DiscordClient;
     constructor() {
         require('dotenv').config();
-        this.client = new DiscordClient(process.env.DISCORD_TOKEN as string, (client: Client) => {
+        const commands = new RegisterCommands();
+        this.client = new DiscordClient(process.env.DISCORD_TOKEN as string, commands, (client: Client) => {
             if (!!client && !!client.user) {
+                commands.registerCommands();
                 console.log(`Logged in as ${client.user.tag}`);
-                (new RegisterCommands()).registerCommands();
             }
         });
     }
