@@ -1,10 +1,14 @@
 import { Client, Events, GatewayIntentBits } from 'discord.js';
 import { CommandBase } from '../commands/commandBase';
 import { RegisterCommands } from '../commands/register';
+import { InteractionEventHandler } from '../events/interaction/interaction.event';
 
 export class DiscordClient {
+
+    handlers: any[];
     commands: Map<string, CommandBase> = new Map();
     client: Client;
+
     constructor(token: string, commands: RegisterCommands, clientReadyHandler?: (client: Client) => void) {
 
         this.commands = commands.getCommandsMap();
@@ -19,11 +23,7 @@ export class DiscordClient {
 
         this.client.login(token);
         this.client.once(Events.ClientReady, clientReadyHandler || (() => { }));
-        // @todo extract the events handling to a separate class
-        this.client.on(Events.InteractionCreate, interaction => {
-            console.log('InteractionCreate event received:', interaction);
-            if (!interaction.isCommand()) return;
-            this.commands.get(interaction.commandName).execute(interaction);
-        });
+
+        this.handlers = [new InteractionEventHandler(this)]
     }
 }

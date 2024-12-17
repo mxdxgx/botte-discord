@@ -9,7 +9,7 @@ export class Start {
         const commands = new RegisterCommands();
         this.client = new DiscordClient(process.env.DISCORD_TOKEN as string, commands, (client: Client) => {
             if (!!client && !!client.user) {
-                commands.registerCommands();
+                commands.registerCommands().then(() => console.log("Commands registered"));
                 console.log(`Logged in as ${client.user.tag}`);
             }
         });

@@ -11,7 +11,7 @@ vi.mock('dotenv', () => ({
 vi.mock('discord.js', async (importOriginal) => {
     const original = await importOriginal();
     return {
-        ...original,
+        ...original as any,
         REST: vi.fn().mockImplementation(() => ({
             setToken: vi.fn().mockReturnThis(),
             put: vi.fn().mockResolvedValue(true)

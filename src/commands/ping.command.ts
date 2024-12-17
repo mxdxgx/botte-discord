@@ -15,7 +15,6 @@ export class PingCommand extends CommandBase {
     }
 
     async execute(interaction: any): Promise<void> {
-        console.log('PingCommand.execute called with interaction:', interaction);
         await interaction.reply('Pong!');
     }
 }
