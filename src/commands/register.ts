@@ -12,14 +12,10 @@ export class RegisterCommands {
     }
 
     public async registerCommands() {
-        try {
-            console.log('Started refreshing application (/) commands.');
-            this.rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: Array.from(this.commands.values()) }).then(() => {
-                console.log('Successfully reloaded application (/) commands.');
-            });
-        } catch (error) {
-            console.error(error);
-        }
+        console.log('Started refreshing application (/) commands.');
+        this.rest.put(Routes.applicationCommands(process.env.CLIENT_ID), { body: Array.from(this.commands.values()) }).then(() => {
+            console.log('Successfully reloaded application (/) commands.');
+        });
     }
 
     public getCommandsMap(): Map<string, CommandBase> {
