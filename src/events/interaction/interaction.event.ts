@@ -5,14 +5,14 @@ import { DiscordClient } from "../../client/discordClient";
  * Handles interaction events for the Discord client.
  */
 export class InteractionEventHandler {
-    private client: DiscordClient;
+    private discordInstance: DiscordClient;
 
     /**
      * Creates an instance of InteractionEventHandler.
      * @param client - The Discord client instance.
      */
-    constructor(client: DiscordClient) {
-        this.client = client;
+    constructor(discordInstance: DiscordClient) {
+        this.discordInstance = discordInstance;
         this.handleCreate();
     }
 
@@ -21,10 +21,10 @@ export class InteractionEventHandler {
      * Logs the received interaction and executes the corresponding command if the interaction is a command.
      */
     public handleCreate() {
-        this.client.client.on(Events.InteractionCreate, interaction => {
+        this.discordInstance.client.on(Events.InteractionCreate, interaction => {
             console.log('InteractionCreate event received:', interaction);
             if (!interaction.isCommand()) return;
-            this.client.commands.get(interaction.commandName).execute(interaction);
+            this.discordInstance.commands.get(interaction.commandName).execute(interaction);
         });
     }
 }
