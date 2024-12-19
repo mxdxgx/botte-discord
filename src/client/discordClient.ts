@@ -3,8 +3,20 @@ import { CommandBase } from '../commands/commandBase';
 import { RegisterCommands } from '../commands/register';
 import { InteractionEventHandler } from '../events/interaction/interaction.event';
 
+/**
+ * The `DiscordClient` class is responsible for initializing the Discord client and registering event handlers.
+ * 
+ * @remarks
+ * This class performs the following actions during initialization:
+ * 1. Initializes a new Discord client with the provided token and commands.
+ * 2. Registers event handlers for interactions.
+ * 
+ * @example
+ * ```typescript
+ * const client = new DiscordClient(token, commands);
+ * ```
+ */
 export class DiscordClient {
-
     handlers: any[];
     commands: Map<string, CommandBase> = new Map();
     client: Client;
